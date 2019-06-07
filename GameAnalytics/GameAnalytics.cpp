@@ -10,7 +10,7 @@ int main()
 	ev.push_back("Param5", "Val3");
 	ev.push_back("Param4", "Val4");
 	ev.push_back("Param3", "Val5");
-	std::cout << ev.toString() << "\n\n";
+	std::cout << ev.toXML() << "\n\n";
 
 	system("Pause");
 	return 0;

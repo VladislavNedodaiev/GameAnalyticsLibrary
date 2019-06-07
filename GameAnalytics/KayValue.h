@@ -1,8 +1,9 @@
 #pragma once
 
 #include "Stringable.h"
+#include "Serializable.h"
 
-struct KeyValue : public Stringable
+struct KeyValue : public Stringable, public Serializable
 {
 
 	std::string Key;
@@ -25,5 +26,8 @@ struct KeyValue : public Stringable
 
 	// return value is represented in following format: "Key":"Value"
 	std::string toString() const;
+	std::string toXML() const;
+	std::string toJSON() const;
+	std::string toCSV() const;
 
 };

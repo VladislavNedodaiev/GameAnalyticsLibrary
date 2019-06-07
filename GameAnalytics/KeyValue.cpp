@@ -65,3 +65,42 @@ std::string KeyValue::toString() const
 	return "\"" + this->Key + "\":\"" + this->Value + "\"";
 
 }
+
+std::string KeyValue::toXML() const
+{
+
+	std::string result = "";
+
+	result += "<KeyValue>";
+
+	result += "<Key>";
+	result += this->Key;
+	result += "</Key>";
+
+	result += "<Value>";
+	result += this->Value;
+	result += "</Value>";
+
+	result += "</KeyValue>";
+
+	return result;
+
+}
+
+std::string KeyValue::toJSON() const
+{
+
+	std::string result = "";
+
+	return result;
+
+}
+
+std::string KeyValue::toCSV() const
+{
+
+	std::string result = "";
+
+	return result;
+
+}

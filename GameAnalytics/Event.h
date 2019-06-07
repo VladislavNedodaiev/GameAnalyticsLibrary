@@ -5,10 +5,10 @@
 #include <vector>
 #include <ctime>
 
-class Event : public Stringable
+class Event : public Stringable, public Serializable
 {
 
-	std::vector <KeyValue> _keyvalues;
+	std::vector <KeyValue> _parametres;
 
 	void _createTimestamp();
 
@@ -44,5 +44,8 @@ public:
 
 	// each key-value pair is separated with comma
 	std::string toString() const;
+	std::string toXML() const;
+	std::string toJSON() const;
+	std::string toCSV() const;
 
 };

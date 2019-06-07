@@ -2,14 +2,12 @@
 
 #include "Event.h"
 
-class GAC : public Stringable
+class GAC : public Stringable, public Serializable
 {
-
-	std::vector <Event> _events;
 
 public:
 
-	GAC();
+	std::vector <Event> events;
 
 	std::string toString() const;
 	std::string toXML() const;
