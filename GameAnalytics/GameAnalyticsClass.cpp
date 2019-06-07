@@ -38,7 +38,7 @@ std::string GAC::toXML() const
 
 	}
 
-	result += "<ArrayOfEvent>";
+	result += "</ArrayOfEvent>";
 
 	return result;
 
