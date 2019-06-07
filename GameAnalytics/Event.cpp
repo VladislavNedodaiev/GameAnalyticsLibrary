@@ -33,6 +33,29 @@ Event::Event(const int id)
 
 }
 
+Event::Event(const Event &object)
+{
+
+	this->operator=(object);
+
+}
+
+Event& Event::operator=(const Event &object)
+{
+
+	this->id = object.id;
+
+	int count = object.getCountKV();
+
+	for (int i = 0; i < count; i++)
+	{
+
+		this->push_back(object.getKey(i), object.getValue(i));
+
+	}
+
+}
+
 KeyValue* Event::push_back(const std::string Key, const std::string Value)
 {
 
@@ -63,6 +86,13 @@ KeyValue* Event::getKV(const std::string Key, const std::string Value)
 }
 
 KeyValue* Event::getKV(const int i)
+{
+
+	return this->operator[](i);
+
+}
+
+KeyValue* Event::operator[](const int i)
 {
 
 	if (i < 0
@@ -96,13 +126,6 @@ std::string Event::operator[](const std::string Key) const
 
 }
 
-std::string Event::operator[](const int i) const
-{
-
-	return this->getValue(i);
-
-}
-
 std::string Event::getValue(const std::string Key) const
 {
 
@@ -130,6 +153,17 @@ std::string Event::getValue(const int i) const
 		return "";
 
 	return this->_keyvalues[i].Value;
+
+}
+
+std::string Event::getKey(const int i) const
+{
+
+	if (i < 0
+		|| i >= this->_keyvalues.size())
+		return "";
+
+	return this->_keyvalues[i].Key;
 
 }
 

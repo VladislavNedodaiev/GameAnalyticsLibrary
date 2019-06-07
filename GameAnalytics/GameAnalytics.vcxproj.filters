@@ -19,11 +19,11 @@
     <Filter Include="Source Files\Event">
       <UniqueIdentifier>{bfb254db-c5d8-4cb2-afde-4a70835028c4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Utils">
-      <UniqueIdentifier>{ef17a266-799a-4dc4-81ea-6f5e444177c5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Utils">
       <UniqueIdentifier>{7be9f637-3101-40db-8372-deedb717fbd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{ef17a266-799a-4dc4-81ea-6f5e444177c5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +42,9 @@
     <ClCompile Include="Stringable.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="Serializable.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Event.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Stringable.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Serializable.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>

@@ -119,12 +119,14 @@
     <ClCompile Include="GameAnalytics.cpp" />
     <ClCompile Include="GameAnalyticsClass.cpp" />
     <ClCompile Include="KeyValue.cpp" />
+    <ClCompile Include="Serializable.cpp" />
     <ClCompile Include="Stringable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Event.h" />
     <ClInclude Include="GameAnalyticsClass.h" />
     <ClInclude Include="KayValue.h" />
+    <ClInclude Include="Serializable.h" />
     <ClInclude Include="Stringable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
