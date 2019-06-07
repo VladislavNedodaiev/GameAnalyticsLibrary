@@ -265,7 +265,7 @@ std::string Event::toXML() const
 	result += "<Event>";
 
 	result += "<id>";
-	result += this->id;
+	result += std::to_string(this->id);
 	result += "</id>";
 	
 	result += "<Parametres>";
@@ -291,6 +291,29 @@ std::string Event::toJSON() const
 
 	std::string result = "";
 
+	result += "{";
+	result += "\"id\":" + std::to_string(this->id);
+	result += ",";
+
+	result += "\"Parametres\":";
+	result += "[";
+
+	int i = 0;
+	int count = this->_parametres.size();
+	while (i < count - 1)
+	{
+		result += this->_parametres[i].toJSON() + ",";
+		i++;
+	}
+	if (count)
+	{
+		result += this->_parametres[i].toJSON();
+	}
+
+	result += "]";
+
+	result += "}";
+
 	return result;
 
 }
@@ -299,6 +322,21 @@ std::string Event::toCSV() const
 {
 
 	std::string result = "";
+
+	result += std::to_string(this->id);
+	result += ",";
+	
+	int i = 0;
+	int count = this->_parametres.size();
+	while (i < count - 1)
+	{
+		result += this->_parametres[i].toCSV() + ",";
+		i++;
+	}
+	if (count)
+	{
+		result += this->_parametres[i].toCSV();
+	}
 
 	return result;
 

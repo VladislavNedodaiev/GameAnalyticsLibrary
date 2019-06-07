@@ -1,5 +1,21 @@
 #include "GameAnalyticsClass.h"
 
+bool GAC::_tofile(const std::string filename, const std::string data) const
+{
+
+	std::ofstream ofs(filename);
+
+	if (ofs.is_open())
+	{
+		ofs << data;
+	}
+
+	ofs.close();
+
+	return true;
+
+}
+
 std::string GAC::toString() const
 {
 
@@ -49,6 +65,23 @@ std::string GAC::toJSON() const
 
 	std::string result = "";
 
+	result += "[";
+
+	int i = 0;
+	int count = this->events.size();
+	while (i < count - 1)
+	{
+		result += this->events[i].toJSON() + ",";
+		i++;
+	}
+	if (count)
+	{
+		result += this->events[i].toJSON();
+	}
+
+
+	result += "]";
+
 	return result;
 
 }
@@ -57,6 +90,51 @@ std::string GAC::toCSV() const
 {
 
 	std::string result = "";
+
+	int i = 0;
+	int count = this->events.size();
+	while (i < count - 1)
+	{
+		result += this->events[i].toCSV() + "\n";
+		i++;
+	}
+	if (count)
+	{
+		result += this->events[i].toCSV();
+	}
+
+	return result;
+
+}
+
+std::string GAC::toXML(const std::string filename) const
+{
+
+	std::string result = this->toXML();
+
+	this->_tofile(filename, result);
+
+	return result;
+
+}
+
+std::string GAC::toJSON(const std::string filename) const
+{
+
+	std::string result = this->toJSON();
+
+	this->_tofile(filename, result);
+
+	return result;
+
+}
+
+std::string GAC::toCSV(const std::string filename) const
+{
+
+	std::string result = this->toCSV();
+
+	this->_tofile(filename, result);
 
 	return result;
 

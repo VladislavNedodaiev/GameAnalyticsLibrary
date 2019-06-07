@@ -92,6 +92,16 @@ std::string KeyValue::toJSON() const
 
 	std::string result = "";
 
+	result += "{";
+
+	result += "\"Key\":";
+	result += "\"" + this->Key + "\",";
+
+	result += "\"Value\":";
+	result += "\"" + this->Value + "\",";
+
+	result += "}";
+
 	return result;
 
 }
@@ -100,6 +110,10 @@ std::string KeyValue::toCSV() const
 {
 
 	std::string result = "";
+
+	result += this->Key;
+	result += ":";
+	result += this->Value;
 
 	return result;
 
