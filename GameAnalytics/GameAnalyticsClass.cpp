@@ -16,6 +16,58 @@ bool GAC::_tofile(const std::string filename, const std::string data) const
 
 }
 
+bool GAC::_toserver(const std::string webaddress, const std::string data, const std::string extension) const
+{
+
+	// prepare the request
+	sf::Http::Request request("/postanalytics.php", sf::Http::Request::Post);
+
+	// encode the parameters in the request body
+	std::ostringstream stream;
+	stream << "data=" << data << "&extension=" << extension;
+	request.setBody(stream.str());
+
+	// send the request
+	sf::Http http(webaddress);
+	sf::Http::Response response = http.sendRequest(request);
+
+	// check the status
+	if (response.getStatus() == sf::Http::Response::Ok)
+	{
+		// check the contents of the response
+		std::cout << response.getBody() << std::endl;
+		return true;
+	}
+	else
+	{
+		std::cout << response.getStatus() << " request failed" << std::endl;
+	}
+	return false;
+
+	/*// prepare the request
+	sf::Http::Request request("postanalytics.php", sf::Http::Request::Post);
+
+	// encode the parameters in the request body
+	std::ostringstream stream;
+	//stream << "data=" << data << "&extension=" << extension;
+	stream << "data=sdsdad&extension=xml";
+	request.setBody(stream.str());
+
+	// send the request
+	sf::Http http(webaddress);
+	sf::Http::Response response = http.sendRequest(request);
+
+	// check the status
+	if (response.getStatus() == sf::Http::Response::Ok)
+	{
+		// check the contents of the response
+		return true;
+	}
+	
+	return false;*/
+
+}
+
 std::string GAC::toString() const
 {
 
@@ -107,34 +159,43 @@ std::string GAC::toCSV() const
 
 }
 
-std::string GAC::toXML(const std::string filename) const
+std::string GAC::toXML(const std::string path, PostMethod method) const
 {
 
 	std::string result = this->toXML();
 
-	this->_tofile(filename, result);
+	if (!method)
+		this->_tofile(path, result);
+	else
+		this->_toserver(path, result, "xml");
 
 	return result;
 
 }
 
-std::string GAC::toJSON(const std::string filename) const
+std::string GAC::toJSON(const std::string path, PostMethod method) const
 {
 
 	std::string result = this->toJSON();
 
-	this->_tofile(filename, result);
+	if (!method)
+		this->_tofile(path, result);
+	else
+		this->_toserver(path, result, "json");
 
 	return result;
 
 }
 
-std::string GAC::toCSV(const std::string filename) const
+std::string GAC::toCSV(const std::string path, PostMethod method) const
 {
 
 	std::string result = this->toCSV();
 
-	this->_tofile(filename, result);
+	if (!method)
+		this->_tofile(path, result);
+	else
+		this->_toserver(path, result, "csv");
 
 	return result;
 
