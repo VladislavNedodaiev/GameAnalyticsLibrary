@@ -62,5 +62,8 @@
     <ClInclude Include="Serializable.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="HTTPRequest.hpp">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

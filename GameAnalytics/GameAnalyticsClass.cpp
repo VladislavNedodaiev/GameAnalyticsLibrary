@@ -20,29 +20,28 @@ bool GAC::_toserver(const std::string webaddress, const std::string data, const 
 {
 
 	// prepare the request
-	sf::Http::Request request("/postanalytics.php", sf::Http::Request::Post);
-
-	// encode the parameters in the request body
-	std::ostringstream stream;
-	stream << "data=" << data << "&extension=" << extension;
-	request.setBody(stream.str());
-
-	// send the request
-	sf::Http http(webaddress);
-	sf::Http::Response response = http.sendRequest(request);
-
-	// check the status
-	if (response.getStatus() == sf::Http::Response::Ok)
+	try
 	{
-		// check the contents of the response
-		std::cout << response.getBody() << std::endl;
-		return true;
+		// you can pass http::InternetProtocol::V6 to Request to make an IPv6 request
+		http::Request request(webaddress);
+
+		std::ostringstream stream;
+		stream << "data=" << data << "&extension=" << extension;
+
+		// send a post request
+		http::Response response = request.send("POST", stream.str(), {
+			"Content-Type: application/x-www-form-urlencoded"
+			});
+
+		std::cout << std::string(response.body.begin(), response.body.end()) << std::endl; // print the result
 	}
-	else
+	catch (const std::exception& e)
 	{
-		std::cout << response.getStatus() << " request failed" << std::endl;
+		std::cerr << "Request failed, error: " << e.what() << std::endl;
+		return false;
 	}
-	return false;
+
+	return true;
 
 	/*// prepare the request
 	sf::Http::Request request("postanalytics.php", sf::Http::Request::Post);

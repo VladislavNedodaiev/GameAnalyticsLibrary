@@ -21,9 +21,9 @@ int main()
 	gac.events.push_back(ev3);
 
 	std::cout << gac.toString() << "\n\n";
-	std::cout << gac.toXML("http://127.0.0.1:80", GAC::PostMethod::Server) << "\n\n";
-	std::cout << gac.toJSON("http://127.0.0.1:80", GAC::PostMethod::Server) << "\n\n";
-	std::cout << gac.toCSV("http://127.0.0.1:80", GAC::PostMethod::Server) << "\n\n";
+	std::cout << gac.toXML("http://127.0.0.1/GameAnalytics/postanalytics.php", GAC::PostMethod::Server) << "\n\n";
+	std::cout << gac.toJSON("http://127.0.0.1/GameAnalytics/postanalytics.php", GAC::PostMethod::Server) << "\n\n";
+	std::cout << gac.toCSV("http://127.0.0.1/GameAnalytics/postanalytics.php", GAC::PostMethod::Server) << "\n\n";
 
 	system("Pause");
 	return 0;

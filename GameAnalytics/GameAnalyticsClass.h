@@ -1,10 +1,10 @@
 #pragma once
 
+#include "HTTPRequest.hpp"
 #include "Event.h"
 
 #include <fstream>
 #include <http.h>
-#include <SFML/Network.hpp>
 #include <sstream>
 #include <iostream>
 

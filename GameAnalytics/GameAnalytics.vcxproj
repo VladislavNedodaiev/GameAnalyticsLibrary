@@ -134,6 +134,7 @@
   <ItemGroup>
     <ClInclude Include="Event.h" />
     <ClInclude Include="GameAnalyticsClass.h" />
+    <ClInclude Include="HTTPRequest.hpp" />
     <ClInclude Include="KayValue.h" />
     <ClInclude Include="Serializable.h" />
     <ClInclude Include="Stringable.h" />
